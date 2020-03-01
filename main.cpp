@@ -1,9 +1,10 @@
 #include <iostream>
+#include "sort.h"
 
-using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    sort test; //SORT OBJECT
+    test.show(); // SORT FUNCTION
     return 0;
 }
