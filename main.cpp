@@ -1,8 +1,9 @@
 #include <iostream>
 #include <memory>
 #include <stdlib.h>
-//#include "sort.h"
-#include "sort.cpp"
+#include <utility>
+
+#include "sort.hpp"
 
 void display_array(int *array,int last_index)
 {
@@ -16,9 +17,6 @@ void display_array(int *array,int last_index)
 
 int main()
 {
-
-    Sort test; //SORT OBJECT
-
     std::cout<<"Array Size: ";
     int size;
     std::cin>>size;
@@ -31,12 +29,14 @@ int main()
             array[i]=rand() % 100000;
         }
         std::cout<<std::endl;
-
-
-   test.merge_sort(array,0,size-1);
-   std::cout<<"AFTTER MERGE SORT VVVVVVVVVVVVVV!!"<<std::endl;
-
     //display_array(array,size-1);
+    quick_sort(array,0,size-1);
+    std::cout<<"AFTTER QUICK SORT!!"<<std::endl;
+    display_array(array,size-1);
+
+ //  std::cout<<"AFTTER MERGE SORT VVVVVVVVVVVVVV!!"<<std::endl;
+
+ //   display_array(array,size-1);
 
     delete [] array;                        // Remember to deallocate memory for array
 
