@@ -19,6 +19,15 @@ void display_array(int *array,int size_of_array)
 }
 
 
+void reverse(int arr[], int first_index, int last_index)
+{
+	if (first_index < last_index)
+	{
+		swap(arr[first_index], arr[last_index]);
+		reverse(arr, first_index + 1, last_index - 1);
+	}
+}
+
 int main()
 {
     Timer timer;
@@ -46,6 +55,7 @@ int main()
                 array_of_arrays[i][j]=rand() % 100000;
             }
         }
+
 
 
         timer_of_all_sortings.start();  // START TIMER OF 100 SORTS
@@ -76,6 +86,7 @@ int main()
         {
            delete [] array_of_arrays[i];
         }
+
         delete [] array_of_arrays;
 
     return 0;
