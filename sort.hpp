@@ -1,17 +1,17 @@
+#pragma once
+#ifndef SORT_HPP
+#define SORT_HPP
+
+
+
+
 #include <iostream>
 #include <math.h>
 #include <algorithm>
 
 
-template<typename Var>
-void swap(Var &first, Var &second )
-{
 
-    Var tmp = first;
-    first = second;
-    second = tmp;
-}
-
+#include "array.hpp"
 
 template<typename Var>
 void merge(Var *array,int start_index, int middle_index, int end_index)
@@ -225,6 +225,7 @@ void intro_sort(Var* array, int size) {
 
 
 
+#endif // SORT_HPP
 
 
 

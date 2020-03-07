@@ -7,27 +7,10 @@
 #include "timer.hpp"
 #include "array.hpp"
 
-#define NUMBER_OF_ARRAYS 2
+#define NUMBER_OF_ARRAYS 100
 
 
-void display_array(int *array,int size_of_array)
-{
-    for (int i=0;i<size_of_array;i++)
-    {
-        std::cout<<array[i]<<", ";
-    }
-    std::cout<<std::endl;
-}
 
-
-void reverse(int arr[], int first_index, int last_index)
-{
-	if (first_index < last_index)
-	{
-		swap(arr[first_index], arr[last_index]);
-		reverse(arr, first_index + 1, last_index - 1);
-	}
-}
 
 int main()
 {
@@ -56,17 +39,9 @@ int main()
                 array_of_arrays[i][j]=rand() % 100000;
             }
         }
-        // TO NIE MOZE BYC TAK PROSTO JEDNAK :))))
+    percentage_sort(array_of_arrays[0],0,size-1);
 
-    std::cout<<"1st array: "<<std::endl;
-    display_array(array_of_arrays[0],size);
-    std::cout<<"2nd array: "<<std::endl;
-    display_array(array_of_arrays[1],size);
 
-    int *merged= new int [size*2];
-    merged = merge_arrays(array_of_arrays[0],array_of_arrays[1],size,size);
-       std::cout<<"MERGED "<<std::endl;
-    display_array(merged,size*2);
    /*
 
         timer_of_all_sortings.start();  // START TIMER OF 100 SORTS
