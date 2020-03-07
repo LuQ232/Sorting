@@ -5,6 +5,7 @@
 
 #include "sort.hpp"
 #include "timer.hpp"
+#include "array.hpp"
 
 #define NUMBER_OF_ARRAYS 2
 
