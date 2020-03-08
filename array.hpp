@@ -6,10 +6,11 @@
 #include <math.h>
 #include <algorithm>
 
+#include "tests.hpp"
 
 
 ////////////////////DECLARATION QUICK INCLUDED IN SORT.HPP/////////////
-/////////cuz array.hpp is included faster??? idn //////////////////////
+/////////cuz array.hpp is included faster??? idk //////////////////////
 template<typename Var>
 void quick_sort(Var *array,int start_index,int end_index);
 ///////////////////////////////////////////////////////////////////////
@@ -77,13 +78,18 @@ delete [] merged_array;
 template<typename Var>
 void percentage_sort(Var *array, int first_index, int last_index)
 {
+    /* UNCOMMENT FOR TESTS
     std::cout<<"Original array:"<<std::endl;
     display_array(array,last_index+1);
+    */
+
+    std::cout<<"Sort percentage: ";
 
     double percentage=0.0;
     std::cin >> percentage;
+    std::cout<<std::endl;
 
-    while(percentage<0.1 || std::cin.fail())
+    while(percentage<0 || percentage>100|| std::cin.fail())
     {
         std::cout<<"Percentage is too low! One more time:"<<std::endl;
 
@@ -112,7 +118,7 @@ void percentage_sort(Var *array, int first_index, int last_index)
         j++;
     }
 
-
+/*          UNCOMMENT FOR TESTS
      std::cout<<"Array to sort:"<<std::endl;
      display_array(array_to_sort,split_index);
 
@@ -123,11 +129,12 @@ void percentage_sort(Var *array, int first_index, int last_index)
 
      std::cout<<"Array after sort:"<<std::endl;
      display_array(array_to_sort,split_index);
+*/
 
  array = merge_arrays(array_to_sort,array_not_to_sort,split_index,last_index-split_index+1);
 
-     std::cout<<"MERGED PERCENTAGE SORTED ARRAY: "<<std::endl;
-     display_array(array,last_index+1);
+//     std::cout<<"MERGED PERCENTAGE SORTED ARRAY: "<<std::endl;
+//   display_array(array,last_index+1);
 
 }
 

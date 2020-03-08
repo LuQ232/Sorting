@@ -10,7 +10,7 @@
 #include <algorithm>
 
 
-
+#include "tests.hpp"
 #include "array.hpp"
 
 template<typename Var>

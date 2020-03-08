@@ -1,3 +1,8 @@
+#pragma once
+#ifndef TIMER_HPP
+#define TIMER_HPP
+
+
 #include <iostream>
 #include <chrono>
 #include <unistd.h>
@@ -23,3 +28,4 @@ class Timer {
 };
 
 
+#endif // TIMER_HPP
