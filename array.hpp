@@ -31,14 +31,14 @@ void display_array(Var *array,int size_of_array)
 }
 
 
-
+//I HAD TO DO DYNAMIC ALLOCATION CUZ WHEN ARRAY HITS MILION THEN //
+//SEGMENTATION FAULT ON THIS FUNCTION                            //
 template<typename Var>
 void swap(Var &first, Var &second )
 {
-
-    Var tmp = first;
+    Var temp = first;
     first = second;
-    second = tmp;
+    second = temp;
 }
 
 template<typename Var>
@@ -47,6 +47,8 @@ void reverse(Var *array, int first_index, int last_index)
 	if (first_index < last_index)
 	{
 		swap(array[first_index], array[last_index]);
+		//////////////TEST/////////////////
+		std::cout<<"swap nr:"<<first_index+1<<std::endl;
 		reverse(array, first_index + 1, last_index - 1);
 	}
 }

@@ -13,7 +13,7 @@
 #include "sort.hpp"
 
 
-#define NUMBER_OF_ARRAYS 100
+#define NUMBER_OF_ARRAYS 1
 
 
         //TEST - EACH ARRRAY 1 MILION LONG
@@ -40,6 +40,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
             }
 
 ////////////////////FILL EVERY ARRAY WITH RAND////////////////////////
+        srand(time(NULL));
         for (int i=0; i<NUMBER_OF_ARRAYS; i++)
             {
                 for (int j=0; j<size; j++)
@@ -48,9 +49,30 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
+
         percentage_sort(array_of_arrays[0],0,size-1);
+
+        int are_reversed = 0;
+        std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
+        std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
+        std::cin>>are_reversed;
+
+        if(are_reversed==1)
+        {
+            for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+                {
+                    quick_sort(array_of_arrays[i],0,size-1);
+                }
+
+            for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+                {
+                    reverse(array_of_arrays[i],0,size-1);
+                }
+        }
     /////////////////////////////////////////////////////////////////////
+
     /////////////////////////SORTING!!!//////////////////////////////////
+    std::cout<<"PROGRAM STARED SORTING ARRAYS. WAIT!"<<std::endl;
 
     timer_of_all_sortings.start();  // START TIMER OF 100 SORTS
 
@@ -59,13 +81,13 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                //std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<std::endl;
                //std::cout<<"Sort number: "<<i<<std::endl;
                //std::cout<<"BEFORE SORT: "<<std::endl;
-               // display_array(array_of_arrays[i],size);
+               //display_array(array_of_arrays[i],size);
                // timer.start();
                quick_sort(array_of_arrays[i],0,size-1);
                //timer.stop();
                //timer.print_time_duration();
                //std::cout<<"AFTER SORT: "<<std::endl;
-               // display_array(array_of_arrays[i],size);
+               //display_array(array_of_arrays[i],size);
                //std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<std::endl;
             }
 
@@ -110,9 +132,24 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
             }
 
         percentage_sort(array_of_arrays[0],0,size-1);
+
+          int are_reversed = 0;
+        std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
+        std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
+        std::cin>>are_reversed;
+
+        if(are_reversed==1)
+        {
+
+            for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+                {
+                    quick_sort(array_of_arrays[i],0,size-1);
+                    reverse(array_of_arrays[i],0,size-1);
+                }
+        }
     /////////////////////////////////////////////////////////////////////
     /////////////////////////SORTING!!!//////////////////////////////////
-
+    std::cout<<"PROGRAM STARED SORTING ARRAYS. WAIT!"<<std::endl;
     timer_of_all_sortings.start();  // START TIMER OF 100 SORTS
 
     for (int i=0; i<NUMBER_OF_ARRAYS; i++)
@@ -171,10 +208,25 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
-        percentage_sort(array_of_arrays[0],0,size-1);
+       percentage_sort(array_of_arrays[0],0,size-1);
+
+           int are_reversed = 0;
+        std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
+        std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
+        std::cin>>are_reversed;
+
+        if(are_reversed==1)
+        {
+
+            for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+                {
+                    quick_sort(array_of_arrays[i],0,size-1);
+                    reverse(array_of_arrays[i],0,size-1);
+                }
+        }
     /////////////////////////////////////////////////////////////////////
     /////////////////////////SORTING!!!//////////////////////////////////
-
+    std::cout<<"PROGRAM STARED SORTING ARRAYS. WAIT!"<<std::endl;
     timer_of_all_sortings.start();  // START TIMER OF 100 SORTS
 
     for (int i=0; i<NUMBER_OF_ARRAYS; i++)
