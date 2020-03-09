@@ -32,7 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="array.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="sort.hpp" />
+		<Unit filename="tests.hpp" />
+		<Unit filename="timer.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
