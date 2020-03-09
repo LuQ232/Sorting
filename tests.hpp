@@ -13,7 +13,7 @@
 #include "sort.hpp"
 
 
-#define NUMBER_OF_ARRAYS 1
+#define NUMBER_OF_ARRAYS 100
 
 
         //TEST - EACH ARRRAY 1 MILION LONG
@@ -59,14 +59,11 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
 
         if(are_reversed==1)
         {
+        std::cout<<"Program is sorting and then reversing arrays. Wait!"<<std::endl;
             for (int i=0; i<NUMBER_OF_ARRAYS; i++)
                 {
                     quick_sort(array_of_arrays[i],0,size-1);
-                }
-
-            for (int i=0; i<NUMBER_OF_ARRAYS; i++)
-                {
-                    reverse(array_of_arrays[i],0,size-1);
+                    reverse_array(array_of_arrays[i],size);
                 }
         }
     /////////////////////////////////////////////////////////////////////
@@ -133,7 +130,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
 
         percentage_sort(array_of_arrays[0],0,size-1);
 
-          int are_reversed = 0;
+        int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
         std::cin>>are_reversed;
@@ -144,7 +141,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
             for (int i=0; i<NUMBER_OF_ARRAYS; i++)
                 {
                     quick_sort(array_of_arrays[i],0,size-1);
-                    reverse(array_of_arrays[i],0,size-1);
+                    reverse_array(array_of_arrays[i],size);
                 }
         }
     /////////////////////////////////////////////////////////////////////
@@ -210,7 +207,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
 
        percentage_sort(array_of_arrays[0],0,size-1);
 
-           int are_reversed = 0;
+        int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
         std::cin>>are_reversed;
@@ -221,7 +218,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
             for (int i=0; i<NUMBER_OF_ARRAYS; i++)
                 {
                     quick_sort(array_of_arrays[i],0,size-1);
-                    reverse(array_of_arrays[i],0,size-1);
+                    reverse_array(array_of_arrays[i],size);
                 }
         }
     /////////////////////////////////////////////////////////////////////

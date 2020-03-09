@@ -41,6 +41,7 @@ void swap(Var &first, Var &second )
     second = temp;
 }
 
+/*
 template<typename Var>
 void reverse(Var *array, int first_index, int last_index)
 {
@@ -52,6 +53,19 @@ void reverse(Var *array, int first_index, int last_index)
 		reverse(array, first_index + 1, last_index - 1);
 	}
 }
+*/
+
+template<typename Var>
+void reverse_array( Var *array, int size)
+{
+    for ( int i = 0; i < size / 2; i++ )
+    {
+        int tmp = array[i];
+        array[i] = array[size - i - 1];
+        array[size - i - 1] = tmp;
+    }
+}
+
 
 template<typename Var>
  Var *merge_arrays(Var *left_array,Var *right_array, int left_array_size,int right_array_size)
