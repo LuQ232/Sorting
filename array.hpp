@@ -41,19 +41,7 @@ void swap(Var &first, Var &second )
     second = temp;
 }
 
-/*
-template<typename Var>
-void reverse(Var *array, int first_index, int last_index)
-{
-	if (first_index < last_index)
-	{
-		swap(array[first_index], array[last_index]);
-		//////////////TEST/////////////////
-		std::cout<<"swap nr:"<<first_index+1<<std::endl;
-		reverse(array, first_index + 1, last_index - 1);
-	}
-}
-*/
+
 
 template<typename Var>
 void reverse_array( Var *array, int size)

@@ -28,13 +28,13 @@
 	<chrono>
 	<unistd.h>
 
-1583772161 c:\users\48503\desktop\cpp\sorting\array.hpp
+1583774447 c:\users\48503\desktop\cpp\sorting\array.hpp
 	<iostream>
 	<math.h>
 	<algorithm>
 	"tests.hpp"
 
-1583771051 c:\users\48503\desktop\cpp\sorting\tests.hpp
+1583774727 c:\users\48503\desktop\cpp\sorting\tests.hpp
 	<iostream>
 	<math.h>
 	<algorithm>
