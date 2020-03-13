@@ -13,6 +13,7 @@
 #include "tests.hpp"
 #include "array.hpp"
 
+////////////FUNCION TO MERGE TWO ARRAYS INTO ONE //////////////////////
 template<typename Var>
 void merge(Var *array,int start_index, int middle_index, int end_index)
 {
@@ -40,6 +41,7 @@ void merge(Var *array,int start_index, int middle_index, int end_index)
     int i=0,j=0,k=start_index;
     while(i<left_array_size && j<right_array_size)
     {
+
         if(left_array[i]<=right_array[j])
         {
             array[k] = left_array[i];
@@ -49,15 +51,16 @@ void merge(Var *array,int start_index, int middle_index, int end_index)
             j++;
         }
         k++;
-    }
 
+    }
+    ///////////REWRITE LAST LEFT INDEXES ////////
     while(i<left_array_size)
     {
         array[k] = left_array[i];
         i++;
         k++;
     }
-
+    ///////////REWRITE LAST  RIGHT INDEXES ////////
     while(j<right_array_size)
     {
         array[k] = right_array[j];
@@ -69,6 +72,8 @@ void merge(Var *array,int start_index, int middle_index, int end_index)
     delete [] right_array;
 }
 
+
+/////////////////////FUNCTION TO MERGE SORT ARRAY////////////
 template<typename Var>
 void merge_sort(Var *array,int start_index,int end_index)
 {
@@ -81,34 +86,36 @@ void merge_sort(Var *array,int start_index,int end_index)
     }
 }
 
-
+/////////////////////FUNCTION TO QUICK SORT ARRAY//////////////
 template<typename Var>
 void quick_sort(Var *array,int start_index,int end_index)
 {
 
     int i = start_index;
     int j = end_index;
-    int pivot = array[( start_index + end_index ) / 2 ];
+    int pivot = array[( start_index + end_index ) / 2 ];    //Pivot is middle index element
+
     do
     {
-        while( array[ i ] < pivot )
+        while( array[ i ] < pivot ) // All elements smaller on left side of pivot stays on left side
              i++;
 
-        while( array[ j ] > pivot )
+        while( array[ j ] > pivot ) // All elements bigger on right side of pivot stays on right side
              j--;
 
-        if( i <= j )
+        if( i <= j )    // if elements are not on propper side of pivot we swap them
         {
             swap( array[ i ], array[ j ] );
             i++; j--;
         }
+
     }while( i <= j );
 
     if( start_index < j )
-        quick_sort( array, start_index, j );
+        quick_sort( array, start_index, j );  //dividing to smaller problems
 
     if( end_index > i )
-        quick_sort( array, i, end_index );
+        quick_sort( array, i, end_index );    //dividing to smaller problems
 
 }
 
@@ -140,42 +147,49 @@ int Partition(Var *array, int left, int right) {
 
 
 template<typename Var>
-void max_heapify(Var* array, int heapSize, int index) {
+void max_heapify(Var* array, int heap_size, int index) {
 	int left = (index + 1) * 2 - 1;
 	int right = (index + 1) * 2;
-	int largest = 0;
+	int largest = index;                // set up largest as a root index
 
-	if (left < heapSize && array[left] > array[index])
-		largest = left;
+	if (left < heap_size && array[left] > array[index])  // if left child larger than root
+		largest = left;  // change largest into this larger index
 	else
-		largest = index;
+		largest = index; // no change for largest
 
-	if (right < heapSize && array[right] > array[largest])
+	if (right < heap_size && array[right] > array[largest]) // if right child larger than root
 		largest = right;
 
-	if (largest != index)
+	if (largest != index)           // if largest isn't root then swap
 	{
 	    swap(array[index],array[largest]);
-		max_heapify(array, heapSize, largest);
+		max_heapify(array, heap_size, largest); // do again this function for smaller problem ("tree")
 	}
 }
+
 
 template<typename Var>
 void heap_sort(Var* array, int size) {
-	int heapSize = size;
+	int heap_size = size;
 
-	for(int p = (heapSize - 1) / 2; p >= 0; --p)
-		max_heapify(array, heapSize, p);
+        // BUILDING A HEAP STRUCTURE
+	for(int p = (heap_size - 1) / 2; p >= 0; --p)
+		max_heapify(array, heap_size, p);
 
+
+        // UNPACKING EACH ELEMENT FROM HEAP
 	for(int i = size - 1; i > 0; --i)
 	{
 	    swap(array[i],array[0]);
-		--heapSize;
-		max_heapify(array, heapSize, 0);
+		--heap_size;
+		max_heapify(array, heap_size, 0); // MAX_HEAPIFY FOR REDUCED HEAP
 	}
 }
 
-
+///////////INSERTION SORT///////////////////
+// CHECKING VALUES WITH NEXT ONE, IF NEXT //
+// IS LOWER THEN WE SWAP THEM             //
+////////////////////////////////////////////
 template<typename Var>
 void insertion_sort(Var* array, int size) {
 	for (int i = 1; i < size; ++i)

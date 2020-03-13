@@ -10,7 +10,7 @@
 
 
 ////////////////////DECLARATION QUICK INCLUDED IN SORT.HPP/////////////
-/////////cuz array.hpp is included faster??? idk //////////////////////
+/////////because  array.hpp is included faster??? idk /////////////////
 template<typename Var>
 void quick_sort(Var *array,int start_index,int end_index);
 ///////////////////////////////////////////////////////////////////////
@@ -31,8 +31,7 @@ void display_array(Var *array,int size_of_array)
 }
 
 
-//I HAD TO DO DYNAMIC ALLOCATION CUZ WHEN ARRAY HITS MILION THEN //
-//SEGMENTATION FAULT ON THIS FUNCTION                            //
+
 template<typename Var>
 void swap(Var &first, Var &second )
 {
@@ -54,7 +53,7 @@ void reverse_array( Var *array, int size)
     }
 }
 
-
+//FUNCTION TO MERGE 2 ARRAYS INTO ONE//
 template<typename Var>
  Var *merge_arrays(Var *left_array,Var *right_array, int left_array_size,int right_array_size)
 {
@@ -78,6 +77,7 @@ template<typename Var>
 return merged_array;
 delete [] merged_array;
 }
+
 
 template<typename Var>
 void percentage_sort(Var *array, int first_index, int last_index)
