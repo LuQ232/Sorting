@@ -49,8 +49,11 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
+                for (int j=0; j<NUMBER_OF_ARRAYS; j++)
+                {
+                    percentage_sort(array_of_arrays[i],0,size-1);
+                }
 
-        percentage_sort(array_of_arrays[0],0,size-1);
 
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
@@ -128,8 +131,10 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
-        percentage_sort(array_of_arrays[0],0,size-1);
-
+         for (int j=0; j<NUMBER_OF_ARRAYS; j++)
+                {
+                    percentage_sort(array_of_arrays[i],0,size-1);
+                }
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
@@ -205,8 +210,10 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
-       percentage_sort(array_of_arrays[0],0,size-1);
-
+        for (int j=0; j<NUMBER_OF_ARRAYS; j++)
+                {
+                    percentage_sort(array_of_arrays[i],0,size-1);
+                }
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;

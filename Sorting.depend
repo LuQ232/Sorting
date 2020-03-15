@@ -5,7 +5,7 @@
 
 1583272159 c:\users\48503\desktop\cpp\sorting\sort.h
 
-1583766561 source:c:\users\48503\desktop\cpp\sorting\main.cpp
+1584279322 source:c:\users\48503\desktop\cpp\sorting\main.cpp
 	<iostream>
 	<memory>
 	<stdlib.h>
@@ -16,7 +16,7 @@
 	<iostream>
 	"sort.h"
 
-1583669117 c:\users\48503\desktop\cpp\sorting\sort.hpp
+1584130050 c:\users\48503\desktop\cpp\sorting\sort.hpp
 	<iostream>
 	<math.h>
 	<algorithm>
@@ -28,7 +28,7 @@
 	<chrono>
 	<unistd.h>
 
-1583774447 c:\users\48503\desktop\cpp\sorting\array.hpp
+1584130139 c:\users\48503\desktop\cpp\sorting\array.hpp
 	<iostream>
 	<math.h>
 	<algorithm>
