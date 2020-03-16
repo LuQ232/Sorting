@@ -221,7 +221,7 @@ template<typename Var>
 void intro_sort(Var* array, int size) {
 	int partition_size = Partition(array, 0, size - 1);
 
-	if (partition_size < 20)             // if PIVOT INDEX is lover then 16 insertSort
+	if (partition_size < 16)             // if PIVOT INDEX is lover then 16 insertSort
 	{
 		insertion_sort(array, size);
 	}

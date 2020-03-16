@@ -49,11 +49,14 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
-                for (int j=0; j<NUMBER_OF_ARRAYS; j++)
-                {
-                    percentage_sort(array_of_arrays[i],0,size-1);
-                }
-
+        std::cout<<"Sort percentage: ";
+        double percentage=0.0;
+        std::cin>>percentage;
+        for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+               {
+                    percentage_sort(array_of_arrays[i],0,size-1,percentage);
+               }
+        std::cout<<std::endl;
 
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
@@ -131,10 +134,16 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
-         for (int j=0; j<NUMBER_OF_ARRAYS; j++)
-                {
-                    percentage_sort(array_of_arrays[i],0,size-1);
-                }
+       std::cout<<"Sort percentage: ";
+        double percentage=0.0;
+        std::cin>>percentage;
+       for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+               {
+                    percentage_sort(array_of_arrays[i],0,size-1,percentage);
+               }
+
+        std::cout<<std::endl;
+
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
@@ -149,6 +158,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                     reverse_array(array_of_arrays[i],size);
                 }
         }
+
     /////////////////////////////////////////////////////////////////////
     /////////////////////////SORTING!!!//////////////////////////////////
     std::cout<<"PROGRAM STARED SORTING ARRAYS. WAIT!"<<std::endl;
@@ -159,7 +169,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                //std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<std::endl;
                //std::cout<<"Sort number: "<<i<<std::endl;
                //std::cout<<"BEFORE SORT: "<<std::endl;
-               // display_array(array_of_arrays[i],size);
+               //display_array(array_of_arrays[i],size);
                // timer.start();
                merge_sort(array_of_arrays[i],0,size-1);
                //timer.stop();
@@ -210,10 +220,14 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
-        for (int j=0; j<NUMBER_OF_ARRAYS; j++)
-                {
-                    percentage_sort(array_of_arrays[i],0,size-1);
-                }
+        std::cout<<"Sort percentage: ";
+        double percentage=0.0;
+        std::cin>>percentage;
+            for (int i=0; i<NUMBER_OF_ARRAYS; i++)
+               {
+                    percentage_sort(array_of_arrays[i],0,size-1,percentage);
+               }
+        std::cout<<std::endl;
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
@@ -238,13 +252,13 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                //std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<std::endl;
                //std::cout<<"Sort number: "<<i<<std::endl;
                //std::cout<<"BEFORE SORT: "<<std::endl;
-               // display_array(array_of_arrays[i],size);
+               //display_array(array_of_arrays[i],size);
                // timer.start();
                intro_sort(array_of_arrays[i],size);
                //timer.stop();
                //timer.print_time_duration();
                //std::cout<<"AFTER SORT: "<<std::endl;
-               // display_array(array_of_arrays[i],size);
+               //display_array(array_of_arrays[i],size);
                //std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<std::endl;
             }
 

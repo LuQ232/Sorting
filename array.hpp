@@ -55,43 +55,42 @@ void reverse_array( Var *array, int size)
 
 //FUNCTION TO MERGE 2 ARRAYS INTO ONE//
 template<typename Var>
- Var *merge_arrays(Var *left_array,Var *right_array, int left_array_size,int right_array_size)
+void merge_arrays(Var *main_array, Var *left_array,Var *right_array, int left_array_size,int right_array_size)
 {
 
- Var *merged_array = new Var[left_array_size+right_array_size];
+ //Var *merged_array = new Var[left_array_size+right_array_size];
 
     int i=0,j=0,k=0;
     while(i<left_array_size)
     {
-        merged_array[k] = left_array[i];
+        main_array[k] = left_array[i];
         i++;
         k++;
     }
 
     while(j<right_array_size)
     {
-        merged_array[k] = right_array[j];
+        main_array[k] = right_array[j];
         j++;
         k++;
     }
-return merged_array;
-delete [] merged_array;
+
 }
 
 
 template<typename Var>
-void percentage_sort(Var *array, int first_index, int last_index)
+void percentage_sort(Var *array, int first_index, int last_index,double percentage)
 {
-    /* UNCOMMENT FOR TESTS
-    std::cout<<"Original array:"<<std::endl;
-    display_array(array,last_index+1);
-    */
+    // UNCOMMENT FOR TESTS
+    //std::cout<<"Original array:"<<std::endl;
+    //display_array(array,last_index+1);
 
-    std::cout<<"Sort percentage: ";
 
-    double percentage=0.0;
-    std::cin >> percentage;
-    std::cout<<std::endl;
+    //std::cout<<"Sort percentage: ";
+
+    //double percentage=0.0;
+    //std::cin >> percentage;
+    //std::cout<<std::endl;
 
     while(percentage<0 || percentage>100|| std::cin.fail())
     {
@@ -122,23 +121,24 @@ void percentage_sort(Var *array, int first_index, int last_index)
         j++;
     }
 
-/*          UNCOMMENT FOR TESTS
-     std::cout<<"Array to sort:"<<std::endl;
-     display_array(array_to_sort,split_index);
+//          UNCOMMENT FOR TESTS
+//     std::cout<<"Array to sort:"<<std::endl;
+//     display_array(array_to_sort,split_index);
 
-     std::cout<<"Array not to sort:"<<std::endl;
-     display_array(array_not_to_sort,last_index-split_index+1);
+//     std::cout<<"Array not to sort:"<<std::endl;
+//     display_array(array_not_to_sort,last_index-split_index+1);
 
      quick_sort(array_to_sort,0,split_index-1);
 
-     std::cout<<"Array after sort:"<<std::endl;
-     display_array(array_to_sort,split_index);
-*/
+//     std::cout<<"Array after sort:"<<std::endl;
+//     display_array(array_to_sort,split_index);
 
- array = merge_arrays(array_to_sort,array_not_to_sort,split_index,last_index-split_index+1);
 
-//     std::cout<<"MERGED PERCENTAGE SORTED ARRAY: "<<std::endl;
-//   display_array(array,last_index+1);
+
+ merge_arrays(array,array_to_sort,array_not_to_sort,split_index,last_index-split_index+1);
+
+    //std::cout<<"MERGED PERCENTAGE SORTED ARRAY: "<<std::endl;
+    //display_array(array,last_index+1);
 
 }
 
