@@ -208,7 +208,6 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
         for (int i=0; i<NUMBER_OF_ARRAYS; i++)
             {
                 array_of_arrays[i] = new int[size];
-
             }
 
 ////////////////////FILL EVERY ARRAY WITH RAND////////////////////////
@@ -254,7 +253,9 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                //std::cout<<"BEFORE SORT: "<<std::endl;
                //display_array(array_of_arrays[i],size);
                // timer.start();
-               intro_sort(array_of_arrays[i],size);
+               int depthLimit = 2 * log(size-1);
+               intro_sort(array_of_arrays[i],0,size-1,depthLimit);
+               //intro_sort(array_of_arrays[i],size);
                //timer.stop();
                //timer.print_time_duration();
                //std::cout<<"AFTER SORT: "<<std::endl;

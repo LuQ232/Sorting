@@ -17,7 +17,7 @@ int main()
 
 //test_quick_sort();
 //test_merge_sort();
-//test_intro_sort();
+test_intro_sort();
 
     return 0;
 }

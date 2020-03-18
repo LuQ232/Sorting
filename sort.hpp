@@ -4,7 +4,7 @@
 
 
 
-
+#include<bits/stdc++.h>
 #include <iostream>
 #include <math.h>
 #include <algorithm>
@@ -120,119 +120,91 @@ void quick_sort(Var *array,int start_index,int end_index)
 }
 
 
-template<typename Var>
-int Partition(Var *array, int left, int right) {
-	int pivot = array[right];               // last index is PIVOT
-	int i = left;
 
-	//Elements lower than pivot will be pushed to the left side  of i ( INDEX)
-	//Elements higher than pivot will be pushed to the right side  of i ( INDEX)
+int parentId( int n ) {
+    return (n -1) / 2;
+}
 
-	// The most important is to move the pivot (i++) after swap
-	// because we want the element to be placed before PIVOT
-	for (int j = left; j < right; ++j)
-	{
-		if (array[j] <= pivot)
-		{
-		    swap(array[i],array[j]);
-			i++;
-		}
-	}
+int lChildId( int n ) {
+    return 2*n + 1;
+}
+template <typename var>
+array_elements_swap( var array[], int id1, int id2 ) {
+    var tmp = array[id1];
+    array[id1] = array[id2];
+    array[id2] = tmp;
+}
 
-	array[right] = array[i];
-	array[i] = pivot;
+template <typename var>
+void siftDown( var array[], int rootIndex, int last_index ) {
+    int root = rootIndex;
+    while ( lChildId( root ) <= last_index ) {
+        int child = lChildId( root );
+        int swap = root;
+        if ( array[swap] < array[child] )
+            swap = child;
+        if ( child+1 <= last_index )
+            if ( array[swap] < array[child+1] )
+                swap = child + 1;
+        if ( swap == root )
+            return;
+        else {
+            array_elements_swap( array, root, swap );
+            root = swap;
+        }
+    }
+}
 
-	return i;           // returning index of PIVOT element
+template <typename var>
+void heapify( var *array, int first_index, int last_index ) {
+    int start = parentId( last_index );
+    while ( start >= first_index ) {
+        siftDown( array, start, last_index );
+        start -= 1;
+    }
 }
 
 
-template<typename Var>
-void max_heapify(Var* array, int heap_size, int index) {
-	int left = (index + 1) * 2 - 1;
-	int right = (index + 1) * 2;
-	int largest = index;                // set up largest as a root index
 
-	if (left < heap_size && array[left] > array[index])  // if left child larger than root
-		largest = left;  // change largest into this larger index
-	else
-		largest = index; // no change for largest
+template <typename var>
+int quick_sort_and_split( var *array, int first, int last, bool reversed ) {
+    int refIndex = first + rand()%(last - first);
+    var refValue = array[refIndex];
+    array_elements_swap( array, refIndex, last );
 
-	if (right < heap_size && array[right] > array[largest]) // if right child larger than root
-		largest = right;
-
-	if (largest != index)           // if largest isn't root then swap
-	{
-	    swap(array[index],array[largest]);
-		max_heapify(array, heap_size, largest); // do again this function for smaller problem ("tree")
-	}
+    int position = first;
+    for ( int i = first; i <= last-1; i++ )
+        if( (reversed ? (array[i] > refValue):(array[i] < refValue)) ) {
+            array_elements_swap( array, i, position );
+            position++;
+        }
+    array_elements_swap( array, position, last );
+    return position;
 }
 
 
-template<typename Var>
-void heap_sort(Var* array, int size) {
-	int heap_size = size;
-
-        // BUILDING A HEAP STRUCTURE
-	for(int p = (heap_size - 1) / 2; p >= 0; --p)
-		max_heapify(array, heap_size, p);
-
-
-        // UNPACKING EACH ELEMENT FROM HEAP
-	for(int i = size - 1; i > 0; --i)
-	{
-	    swap(array[i],array[0]);
-		--heap_size;
-		max_heapify(array, heap_size, 0); // MAX_HEAPIFY FOR REDUCED HEAP
-	}
+template <typename var>
+void heap_sort( var *array, int first_index, int last_index ) {
+    int last = last_index;
+    heapify( array, first_index, last_index );
+    while ( last > first_index + 1 ) {
+        array_elements_swap( array, first_index, last );
+        last--;
+        heapify( array, first_index, last );
+    }
 }
 
-///////////INSERTION SORT///////////////////
-// CHECKING VALUES WITH NEXT ONE, IF NEXT //
-// IS LOWER THEN WE SWAP THEM             //
-////////////////////////////////////////////
-template<typename Var>
-void insertion_sort(Var* array, int size) {
-	for (int i = 1; i < size; ++i)
-	{
-		int j = i;
-
-		while ((j > 0))
-		{
-			if (array[j - 1] > array[j])
-			{
-                swap(array[j-1],array[j]);
-				--j;
-			}
-			else
-			{
-				break;
-			}
-		}
-	}
-}
-
-
-///////////////INTRO SORT////////////////////
-//  It is a merge of quick_sort, heap_sort //
-//  and my change is a insertion_sort when //
-//  array is really small ( less than 20)  //
-/////////////////////////////////////////////
-template<typename Var>
-void intro_sort(Var* array, int size) {
-	int partition_size = Partition(array, 0, size - 1);
-
-	if (partition_size < 16)             // if PIVOT INDEX is lover then 16 insertSort
-	{
-		insertion_sort(array, size);
-	}
-	else if (partition_size >(2 * log(size))) // if PIVOT INDEX is bigger than ___ then heap_sort is the most effective (GOOGLE KNOWLEDGE)
-	{
-		heap_sort(array, size);
-	}
-	else
-	{
-		quick_sort(array, 0, size - 1); // medium-size array then go quick_sort
-	}
+template <typename var>
+void intro_sort( var *array, int first_index, int last_index, int maxDepth ) {
+    if ( first_index < last_index ) {
+        if ( !maxDepth ) {
+            heap_sort( array, first_index, last_index );
+            return;
+        }
+        int n = quick_sort_and_split( array, first_index, last_index, false ); //QUICK)SORT USE
+        intro_sort( array, first_index, n-1, maxDepth-1 );
+        intro_sort( array, n+1, last_index, maxDepth-1 );
+    }
 }
 
 
