@@ -15,9 +15,9 @@ int main()
 
 ///// UNCOMMENT NEEDED LINE//////
 
-//test_quick_sort();
+test_quick_sort();
 //test_merge_sort();
-test_intro_sort();
+//test_intro_sort();
 
     return 0;
 }
