@@ -120,15 +120,16 @@ void quick_sort(Var *array,int start_index,int end_index)
 
 // A utility function to swap the values pointed by
 // the two pointers
-void value_swap(int *a, int *b)
+template<typename Var>
+void value_swap(Var *a, Var *b)
 {
-    int *temp = a;
+    Var *temp = a;
     a = b;
     b = temp;
 }
 
-
-void InsertionSort(int array[], int *begin, int *end)
+template<typename Var>
+void InsertionSort(Var array[], int *begin, int *end)
 {
     int left_index = begin - array;
     int right_index = end - array;
@@ -150,9 +151,10 @@ void InsertionSort(int array[], int *begin, int *end)
 
 // Function for partition sort small arrays
 // Returns next to last element
-int* Partition(int array[], int first, int last)
+template<typename Var>
+Var* Partition(Var array[], int first, int last)
 {
-    int pivot = array[last];
+    Var pivot = array[last];
     int i = (first - 1);  // Index of smaller element
 
     for (int j = first; j <= last- 1; j++)
@@ -172,7 +174,8 @@ int* Partition(int array[], int first, int last)
 
 // Function finds Median of three
 // Return pointer for that value
-int *MedianOfThree(int * a, int * b, int * c)
+template<typename Var>
+Var *MedianOfThree(Var * a, Var * b, Var * c)
 {
     if (*a < *b && *b < *c)
         return b;
@@ -189,7 +192,8 @@ int *MedianOfThree(int * a, int * b, int * c)
 }
 
 // A Utility function to perform intro sort
-void IntrosortUtil(int array[], int * begin,
+template<typename Var>
+void IntrosortUtil(Var array[], int * begin,
                   int * end, int depthLimit)
 {
     // Counting size of sent data
@@ -219,7 +223,8 @@ void IntrosortUtil(int array[], int * begin,
 
 //Intro_sort function to calculate depthLimit
 // and start sorting
-void intro_sort(int array[], int *begin, int *end)
+template<typename Var>
+void intro_sort(Var array[], int *begin, int *end)
 {
     int depthLimit = 2 * log(end-begin);
     IntrosortUtil(array, begin, end, depthLimit);
