@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <math.h>
-#include <algorithm>
+
 
 
 
@@ -16,10 +16,7 @@
 #define NUMBER_OF_ARRAYS 100
 
 
-        //TEST - EACH ARRRAY 1 MILION LONG
-        //MERGE 56 SEKUND
-        //QUICK 17 SEKUND
-        //INTRO 52 SEKUND
+
 
 
 void test_quick_sort()
@@ -49,6 +46,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
+////////////////////PERCENTAGE SORT AND REVERSE////////////////////////
         std::cout<<"Sort percentage: ";
         double percentage=0.0;
         std::cin>>percentage;
@@ -57,12 +55,10 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~QUICK SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                     percentage_sort(array_of_arrays[i],0,size-1,percentage);
                }
         std::cout<<std::endl;
-
         int are_reversed = 0;
         std::cout<<"Arrays in normal - random order                - 0"<<std::endl;
         std::cout<<"Arrays earlier sotred and then reversed        - 1"<<std::endl;
         std::cin>>are_reversed;
-
         if(are_reversed==1)
         {
         std::cout<<"Program is sorting and then reversing arrays. Wait!"<<std::endl;
@@ -134,6 +130,8 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~MERGE SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
+
+////////////////////PERCENTAGE SORT AND REVERSE////////////////////////
        std::cout<<"Sort percentage: ";
         double percentage=0.0;
         std::cin>>percentage;
@@ -219,6 +217,8 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                 }
             }
 
+
+////////////////////PERCENTAGE SORT AND REVERSE////////////////////////
         std::cout<<"Sort percentage: ";
         double percentage=0.0;
         std::cin>>percentage;
@@ -253,8 +253,7 @@ std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~INTRO SORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<
                //std::cout<<"BEFORE SORT: "<<std::endl;
                //display_array(array_of_arrays[i],size);
                // timer.start();
-               int depthLimit = 2 * log(size-1);
-               intro_sort(array_of_arrays[i],0,size-1,depthLimit);
+                intro_sort(array_of_arrays[i], array_of_arrays[i], array_of_arrays[i]+size-1);
                //intro_sort(array_of_arrays[i],size);
                //timer.stop();
                //timer.print_time_duration();

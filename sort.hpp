@@ -3,11 +3,8 @@
 #define SORT_HPP
 
 
-
-#include<bits/stdc++.h>
 #include <iostream>
 #include <math.h>
-#include <algorithm>
 
 
 #include "tests.hpp"
@@ -53,14 +50,14 @@ void merge(Var *array,int start_index, int middle_index, int end_index)
         k++;
 
     }
-    ///////////REWRITE LAST LEFT INDEXES ////////
+    ///////////REWRITE LAST left_index INDEXES ////////
     while(i<left_array_size)
     {
         array[k] = left_array[i];
         i++;
         k++;
     }
-    ///////////REWRITE LAST  RIGHT INDEXES ////////
+    ///////////REWRITE LAST  right_index INDEXES ////////
     while(j<right_array_size)
     {
         array[k] = right_array[j];
@@ -80,8 +77,8 @@ void merge_sort(Var *array,int start_index,int end_index)
     if( start_index < end_index )                   // do while we get 1 part of array
     {
         long int middle_index = start_index +( end_index - start_index ) / 2 ; //Calculating middle index
-        merge_sort(array,start_index,middle_index);         //MergeSort for left side of array
-        merge_sort(array,middle_index+1,end_index);         //MergeSort for right side of array
+        merge_sort(array,start_index,middle_index);         //MergeSort for left_index side of array
+        merge_sort(array,middle_index+1,end_index);         //MergeSort for right_index side of array
         merge(array,start_index,middle_index,end_index);    //When sorten then merge them into one array
     }
 }
@@ -97,10 +94,10 @@ void quick_sort(Var *array,int start_index,int end_index)
 
     do
     {
-        while( array[ i ] < pivot ) // All elements smaller on left side of pivot stays on left side
+        while( array[ i ] < pivot ) // All elements smaller on left_index side of pivot stays on left_index side
              i++;
 
-        while( array[ j ] > pivot ) // All elements bigger on right side of pivot stays on right side
+        while( array[ j ] > pivot ) // All elements bigger on right_index side of pivot stays on right_index side
              j--;
 
         if( i <= j )    // if elements are not on propper side of pivot we swap them
@@ -121,90 +118,111 @@ void quick_sort(Var *array,int start_index,int end_index)
 
 
 
-int parentId( int n ) {
-    return (n -1) / 2;
+// A utility function to swap the values pointed by
+// the two pointers
+void value_swap(int *a, int *b)
+{
+    int *temp = a;
+    a = b;
+    b = temp;
 }
 
-int lChildId( int n ) {
-    return 2*n + 1;
-}
-template <typename var>
-array_elements_swap( var array[], int id1, int id2 ) {
-    var tmp = array[id1];
-    array[id1] = array[id2];
-    array[id2] = tmp;
+
+void InsertionSort(int array[], int *begin, int *end)
+{
+    int left_index = begin - array;
+    int right_index = end - array;
+
+    for (int i = left_index+1; i <= right_index; i++)
+    {
+        int key = array[i];
+        int j = i-1;
+
+        while (j >= left_index && array[j] > key)
+        {
+            array[j+1] = array[j];
+            j = j-1;
+        }
+        array[j+1] = key;
+   }
+
 }
 
-template <typename var>
-void siftDown( var array[], int rootIndex, int last_index ) {
-    int root = rootIndex;
-    while ( lChildId( root ) <= last_index ) {
-        int child = lChildId( root );
-        int swap = root;
-        if ( array[swap] < array[child] )
-            swap = child;
-        if ( child+1 <= last_index )
-            if ( array[swap] < array[child+1] )
-                swap = child + 1;
-        if ( swap == root )
-            return;
-        else {
-            array_elements_swap( array, root, swap );
-            root = swap;
+// Function for partition sort small arrays
+// Returns next to last element
+int* Partition(int array[], int first, int last)
+{
+    int pivot = array[last];
+    int i = (first - 1);  // Index of smaller element
+
+    for (int j = first; j <= last- 1; j++)
+    {
+        // if element is < or ==
+        // equal to pivot then swap
+        if (array[j] <= pivot)
+        {
+            i++;
+            swap(array[i], array[j]);
         }
     }
+    swap(array[i + 1], array[last]);
+    return (array + i + 1);
 }
 
-template <typename var>
-void heapify( var *array, int first_index, int last_index ) {
-    int start = parentId( last_index );
-    while ( start >= first_index ) {
-        siftDown( array, start, last_index );
-        start -= 1;
+
+// Function finds Median of three
+// Return pointer for that value
+int *MedianOfThree(int * a, int * b, int * c)
+{
+    if (*a < *b && *b < *c)
+        return b;
+    if (*c <= *b && *b <= *a)
+        return b;
+    if (*a < *c && *c <= *b)
+        return c;
+    if (*b < *c && *c <= *a)
+        return c;
+    if (*c <= *a && *a < *b)
+        return a;
+    if (*b <= *a && *a < *c)
+        return a;
+}
+
+// A Utility function to perform intro sort
+void IntrosortUtil(int array[], int * begin,
+                  int * end, int depthLimit)
+{
+    // Counting size of sent data
+    int size = end - begin;
+
+      // Last small parties of data sort by insertionsort
+    if (size < 16)
+        InsertionSort(array, begin, end);
+
+    // Using heapsort if depthlimit is zero
+    if (depthLimit == 0)
+    {
+        std::make_heap(begin, end+1);
+        std::sort_heap(begin, end+1);
     }
+
+    //Finding pivot by a Median of first,middle and last index
+    int * pivot = MedianOfThree(begin, begin+size/2, end);
+
+    value_swap(pivot, end);
+
+   // QuickSort for halfs of arrays
+    int * partitionPoint = Partition(array, begin-array, end-array);
+    IntrosortUtil(array, begin, partitionPoint-1, depthLimit - 1);
+    IntrosortUtil(array, partitionPoint + 1, end, depthLimit - 1);
 }
 
-
-
-template <typename var>
-int quick_sort_and_split( var *array, int first, int last, bool reversed ) {
-    int refIndex = first + rand()%(last - first);
-    var refValue = array[refIndex];
-    array_elements_swap( array, refIndex, last );
-
-    int position = first;
-    for ( int i = first; i <= last-1; i++ )
-        if( (reversed ? (array[i] > refValue):(array[i] < refValue)) ) {
-            array_elements_swap( array, i, position );
-            position++;
-        }
-    array_elements_swap( array, position, last );
-    return position;
-}
-
-
-template <typename var>
-void heap_sort( var *array, int first_index, int last_index ) {
-    int last = last_index;
-    heapify( array, first_index, last_index );
-    while ( last > first_index + 1 ) {
-        array_elements_swap( array, first_index, last );
-        last--;
-        heapify( array, first_index, last );
-    }
-}
-
-template <typename var>
-void intro_sort( var *array, int first_index, int last_index, int maxDepth ) {
-    if ( first_index < last_index ) {
-        if ( !maxDepth ) {
-            heap_sort( array, first_index, last_index );
-            return;
-        }
-        int n = quick_sort_and_split( array, first_index, last_index, false ); //QUICK)SORT USE
-        intro_sort( array, first_index, n-1, maxDepth-1 );
-        intro_sort( array, n+1, last_index, maxDepth-1 );
-    }
+//Intro_sort function to calculate depthLimit
+// and start sorting
+void intro_sort(int array[], int *begin, int *end)
+{
+    int depthLimit = 2 * log(end-begin);
+    IntrosortUtil(array, begin, end, depthLimit);
 }
 
 
